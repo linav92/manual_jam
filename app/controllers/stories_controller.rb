@@ -10,6 +10,7 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
+    @stories = Story.eager_load(:users)
   end
 
   # GET /stories/new
@@ -25,7 +26,7 @@ class StoriesController < ApplicationController
   # POST /stories.json
   def create
     @story = Story.new(story_params)
-
+    @story.user_id = session[:user_id]
     respond_to do |format|
       if @story.save
         format.html { redirect_to @story, notice: 'Story was successfully created.' }
@@ -69,6 +70,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:title, :picture, :content)
+      params.require(:story).permit(:title, :picture, :content, :user_id)
     end
 end

@@ -1,0 +1,38 @@
+<p>
+  <strong>Nombre:</strong>
+  <%= @user.name %>
+</p>
+<p><strong>Email:</strong>
+  <%= @user.email%></p>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Stories From Users</h1>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>Title</th>
+      <th>Picture</th>
+      <th>Content</th>
+      <th>Created</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.stories.each do |story| %>
+      <tr>
+        <td><%= story.title %></td>
+        <td><%= story.picture %></td>
+        <td><%= story.content %></td>
+        <td> <%=story.created_at.strftime("%d de %B %Y")%> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Create New Story', new_story_path %>|
+<%= link_to 'PicStories', stories_path %>

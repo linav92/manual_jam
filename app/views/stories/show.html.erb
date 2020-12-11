@@ -11,7 +11,8 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
           <h1><%= @story.title %></h1>
-          <small><%= time_ago_in_words(@story.created_at) %> ago</small>
+          <small><%= time_ago_in_words(@story.created_at) %> ago</small><br>
+          <small> Author: <%= @story.user.name %>, <%= @story.user.email %> </small>
         </div>
         <div class="col-md-2"></div>
       </div>
