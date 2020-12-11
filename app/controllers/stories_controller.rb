@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
 
   # GET /stories
   # GET /stories.json

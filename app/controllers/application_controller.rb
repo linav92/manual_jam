@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
 
   protected
   def authenticate_user!
-    unless @current_user.present?
-      flash[:danger] = "No tienes autorización para entrar en esa sección"
+    unless session[:user_id].present?
+      flash[:alert] = "No tienes autorización para entrar en esa sección"
       redirect_to root_path
     end
   end
